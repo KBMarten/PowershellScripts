@@ -1,5 +1,6 @@
 foreach($file in Get-ChildItem -Path .\*.sql)
 {
+    #Write-Host "Executing $($file.Name)..." -NoNewline
 	sqlcmd -d ConversionScripts -i $file.FullName
 }
 
