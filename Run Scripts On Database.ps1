@@ -1,4 +1,4 @@
-foreach($file in Get-ChildItem -Path .\*.sql)
+foreach($file in Get-ChildItem -Path .\*.sql -Recurse -Depth 3)
 {
     #Write-Host "Executing $($file.Name)..." -NoNewline
 	sqlcmd -d ConversionScripts -i $file.FullName
