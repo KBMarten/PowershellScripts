@@ -1,6 +1,6 @@
 ﻿param(
-    [Parameter(Position=0)][alias("t")][String]$table,
-    [Parameter(ValueFromRemainingArguments=$true,Position=1)][alias("c")][String[]]$columns,
+    [alias("t")][Parameter(Position=0)][String]$table,
+    [alias("c")][Parameter(ValueFromRemainingArguments=$true,Position=1)][String[]]$columns,
     [alias("d")][String]$database
 )
 
