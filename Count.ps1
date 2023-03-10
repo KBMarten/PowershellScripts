@@ -23,10 +23,9 @@ $text = "$text count(*) `nfrom $table"
 
 if ($columns)
 {
-    $text = $text + "`ngroup by $($columns -join ", ")"
+    $text = $text + "`ngroup by $($columns -join ", ")" + "`nhaving count(*) > 1" + "`norder by count(*) desc"
 }
 
-$text = $text + "`nhaving count(*) > 1" + "`norder by count(*) desc"
 
 Write-Host $text
 Set-Clipboard $text
