@@ -1,5 +1,5 @@
 ﻿param(
-    $search,
+    [alias("c")] $column,
     [alias("t")] $table,
     [alias("d")] $database
 )
@@ -14,7 +14,7 @@ if ($database)
 $text ="$($text)select t.name AS TableName, c.name AS ColName
 from sys.tables t
 join sys.columns c on c.object_id = t.object_id
-where c.name like '%$search%'"
+where c.name like '%$column%'"
 
 if ($table) 
 {
