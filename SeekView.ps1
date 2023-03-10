@@ -1,5 +1,5 @@
 ﻿param(
-    [parameter(Mandatory = $true)] $view,
+    [alias("v")][parameter(Mandatory = $true)] $view,
     [alias("d")] $database
 )
 
@@ -10,11 +10,10 @@ if ($database)
     $text = "use $database`n"
 }
 
-$text ="$($text)select v.name AS ViewName, c.name AS ColName
+$text ="$($text)select v.name as View
 from sys.views v
-join sys.columns c on c.object_id = v.object_id
-where c.name like '%$view%'
-order by v.name, c.name"
+where v.name like '%$view%'
+order by v.name"
 
 Write-Host $text
 Set-Clipboard $text

@@ -1,5 +1,5 @@
 ﻿param(
-    [parameter(Mandatory = $true)] $table,
+    [alias("t")][parameter(Mandatory = $true)] $table,
     [alias("d")] $database
 )
 
@@ -10,10 +10,10 @@ if ($database)
     $text = "use $database`n"
 }
 
-$text ="$($text)select distinct name
-from sys.tables
-where name like '%$table%'
-order by name"
+$text ="$($text)select t.Name as Table
+from sys.tables t
+where t.name like '%$table%'
+order by t.name"
 
 Write-Host $text
 Set-Clipboard $text
