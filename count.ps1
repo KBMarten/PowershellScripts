@@ -26,7 +26,7 @@ if ($columns)
     $text = $text + "`ngroup by $($columns -join ", ")"
 }
 
-$text = $text + "`nhaving count(*) > 1"
+$text = $text + "`nhaving count(*) > 1" + "`norder by count(*) desc"
 
 Write-Host $text
 Set-Clipboard $text
